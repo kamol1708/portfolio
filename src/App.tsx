@@ -1,6 +1,13 @@
 import { useState } from "react";
+import AddModalTodo from "./components/AddModalTodo";
+import DeleteModal from "./components/DeleteModal";
 
 function App() {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [deleteTodoId, setDeleteTodoId] = useState<string | null>(null);
   const [todos, setTodos] = useState([
     {
       id: '1',
@@ -19,22 +26,19 @@ function App() {
     }
   ]);
   const [filter, setFilter] = useState('all');
-  const [newTodo, setNewTodo] = useState('');
-
   const updateTodoStatus = (id: string, newStatus : string) => {
     setTodos(todos.map(todo => 
       todo.id === id ? { ...todo, status: newStatus } : todo
     ));
   };
 
-  const addNewTodo = () => {
+  const addNewTodo = (title: string, status: string) => {
     const newTodoItem = {
         id: Date.now().toString(),
-        title: newTodo,
-        status: 'in progress'
+        title: title,
+        status: status
     };
     setTodos([...todos, newTodoItem]);
-    setNewTodo('');
   };
 
   const deleteTodo = (id: string) => {
@@ -49,20 +53,13 @@ function App() {
   return (
     <div className="app-container">
       <div className="header">
-        <h1>My Beautiful Todo List</h1>
+        <h1>My Beautiful Task List</h1>
         <p>Organize your tasks in style ✨</p>
       </div>
       
       <div className="add-todo-section">
-        <input 
-          type="text" 
-          value={newTodo} 
-          onChange={(e) => setNewTodo(e.target.value)}
-          placeholder="Add a new task..." 
-          className="todo-input"
-          onKeyDown={(e) => e.key === 'Enter' ? addNewTodo() : null}
-        />
-        <button onClick={addNewTodo} className="add-btn">
+        <AddModalTodo open={open} handleClose={handleClose} addNewTodo={addNewTodo} />
+        <button onClick={handleOpen} className="add-todo-btn">
           <span className="plus-icon">+</span> Add
         </button>
       </div>
@@ -134,7 +131,10 @@ function App() {
                 </button>
                 <button 
                   className="delete-btn" 
-                  onClick={() => deleteTodo(todo.id)}
+                  onClick={() => {{
+                    setDeleteTodoId(todo.id);
+                    setOpenDeleteModal(true);
+                  }}}
                   title="Delete task"
                 >
                   🗑️
@@ -143,6 +143,13 @@ function App() {
             </div>
           ))
         )}
+        <DeleteModal 
+          deleteOpenModal={openDeleteModal} 
+          setDeleteOpenModal={setOpenDeleteModal} 
+          deleteTodoId={deleteTodoId}
+          setDeleteTodoId={setDeleteTodoId}
+          deleteTodo={deleteTodo}
+        />
       </div>
     </div>
   );

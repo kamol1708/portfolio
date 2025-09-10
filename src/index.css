@@ -54,12 +54,12 @@ body {
   box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.add-btn {
+.add-todo-btn {
   background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
   border: none;
   color: white;
-  padding: 0 25px;
-  border-radius: 0 12px 12px 0;
+  padding: 10px 25px;
+  border-radius: 12px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
@@ -68,9 +68,22 @@ body {
   transition: all 0.3s ease;
 }
 
-.add-btn:hover {
+.add-todo-btn:hover {
   background: linear-gradient(135deg, #8a7cc0 0%, #f9b2df 100%);
   transform: translateY(-2px);
+}
+
+.add-todo-form{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.todo-select{
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
 }
 
 .plus-icon {
@@ -188,7 +201,7 @@ body {
 }
 
 .status-text.verified {
-  color: #a6c0fe;
+  color: #3bd956;
 }
 
 .todo-actions {
