@@ -3,10 +3,14 @@ import App from './App.tsx'
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 import { ToastContainer } from 'react-toastify';
+import { BrowserRouter } from 'react-router-dom'
+
 
 createRoot(document.getElementById('root')!).render(
   <>
+  <BrowserRouter >
     <App />
     <ToastContainer />
-  </>,
+  </BrowserRouter>
+  </>
 )

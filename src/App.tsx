@@ -1,24 +1,31 @@
-import { useState } from "react";
 import PostsList from "./lists/posts/PostsList"
 import UserList from "./lists/users/UserList";
 import TodosList from "./lists/todos/TodosList";
+import { NavLink, Route, Routes } from "react-router-dom";
+import CommentList from "./lists/comments/CommentList";
 
 function App() {
-  const [component, setComponent] = useState<'users' | 'posts' | 'todos'>('users');
-
+  
   return (
     <div className="container mx-auto p-4">
-      <div className="buttons">
-        <button className={`btn btn-outline-danger me-2 ${component === 'users' ? 'active' : ''}`} onClick={() => setComponent('users')}>Users</button>
-        <button className={`btn btn-outline-primary me-2 ${component === 'posts' ? 'active' : ''}`} onClick={() => setComponent('posts')}>Posts</button>
-        <button className={`btn btn-outline-success ${component === 'todos' ? 'active' : ''}`} onClick={() => setComponent('todos')}>Todos</button>
-      </div>
-      <div className="content">
-        {component === 'users' && <UserList />}
-        {component === 'posts' && <PostsList />}
-        {component === 'todos' && <TodosList />}
-      </div>
+      <NavLink to={'/users'} >
+        <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded me-2">Users</button>
+      </NavLink>
+      <NavLink to={'/posts'}>
+        <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded me-2">Posts</button>
+      </NavLink>
+      <NavLink to={'/todos'}>
+        <button className="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded">Todos</button>
+      </NavLink>
+
+      <Routes>
+        <Route path="/users" element={<UserList />} />
+        <Route path="/posts" element={<PostsList />} />
+        <Route path="/posts/:id/comments" element={<CommentList />} />
+        <Route path="/todos" element={<TodosList />} />
+      </Routes>
     </div>
+
   )
 }
 

@@ -8,6 +8,8 @@ import DeletePostModal from "./DeletePostModal";
 import useUsers from "../../hooks/useUsers";
 import UserSelect from "./UserSelect";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { GoComment } from "react-icons/go";
+import { useNavigate } from "react-router-dom";
 
 function PostsList() {
   const { posts, createPost, updatePost, deletePost, setSelectedUser, selectedUser, loadMore, hasMore } = usePosts();
@@ -17,6 +19,7 @@ function PostsList() {
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [deletePostId, setDeletePostId] = useState<number | null>(null);
   const [showFilter, setShowFilter] = useState(false);
+  const navigate = useNavigate();
 
   const getRandomColor = () => {
     const colors = [
@@ -34,101 +37,117 @@ function PostsList() {
   };
 
   return (
-    <div className="container-fluid py-5">
-      <div className="row mb-4">
-        <div className="col text-center">
-          <h1 className="display-4 fw-bold text-gradient-post mb-3">Posts Gallery</h1>
+    <div className="min-w-full p-4">
+
+      <div className="mb-6 p-4 ">
+        <div className="text-center border-b pb-3">
+          <h1 className="text-xl">Posts List</h1>
         </div>
       </div>
-      
-      <div className="row mb-4">
-        <div className="col-md-12">
-          <div className="card border-0 shadow-sm">
-            <div className="card-body p-4">
-              <div className="d-flex flex-column flex-md-row gap-3 align-items-center justify-content-between">
-                <div className="d-flex align-items-center">
-                  <button 
-                    className="btn btn-outline-primary d-flex align-items-center me-3"
-                    onClick={() => setShowFilter(!showFilter)}
-                  >
-                    <FaFilter className="me-2" /> Filter
-                  </button>
-                  {showFilter && (
-                    <div className="fade-in">
-                      <UserSelect 
-                        users={users} 
-                        selectedUser={selectedUser}
-                        setSelectedUser={setSelectedUser}
-                      />
-                    </div>
-                  )}
+
+      <div className="mb-6">
+        <div className="bg-white dark:bg-gray-800 shadow-sm rounded-2xl p-4">
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+
+            <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
+              <button
+                onClick={() => setShowFilter(!showFilter)}
+                className="flex items-center gap-2 border border-blue-500 text-blue-500 hover:bg-blue-50 dark:hover:bg-blue-900 px-4 py-2 rounded-xl transition-all duration-200"
+              >
+                <FaFilter /> Filter
+              </button>
+
+              {showFilter && (
+                <div className="animate-fadeIn">
+                  <UserSelect
+                    users={users}
+                    selectedUser={selectedUser}
+                    setSelectedUser={setSelectedUser}
+                  />
                 </div>
-                
-                <button 
-                  className="btn btn-primary d-flex align-items-center px-4 py-2 gradient-btn"
-                  onClick={() => {setOpen(true); setEditPost(null)}}
-                >
-                  <FaPlus className="me-2" /> Create Post
-                </button>
-              </div>
+              )}
             </div>
+            <button
+              onClick={() => {
+                setOpen(true);
+                setEditPost(null);
+              }}
+              className="flex items-center gap-2 px-6 py-2 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-500 text-white font-medium shadow-md hover:shadow-lg hover:scale-105 transition-all duration-200"
+            >
+              <FaPlus /> Create Post
+            </button>
           </div>
         </div>
       </div>
-      
-      <div className="row">
+      <div className="w-full">
         <InfiniteScroll
           dataLength={posts.length}
           next={loadMore}
           hasMore={hasMore}
           loader={
-            <div className="col-12 text-center my-4">
-              <div className="spinner-border text-primary" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </div>
+            <div className="flex justify-center my-6">
+              <div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
             </div>
           }
           endMessage={
-            <div className="col-12">
-              <p className="text-center text-muted p-3 border-top">All posts loaded ✅</p>
+            <div className="text-center text-gray-500 p-4 border-t">
+              All posts loaded ✅
             </div>
           }
         >
-          <div className="row">
-            {posts.map(post => (
-              <div key={post.id} className="col-lg-6 col-xl-4 mb-4">
-                <div className="card h-100 shadow-sm post-card border-0 hover-lift">
-                  <div 
-                    className="card-header-image rounded-top" 
-                    style={{ 
-                      background: getRandomColor(),
-                      height: '160px',
-                      position: 'relative'
-                    }}
-                  >
-                    <div className="category-badge">Post #{post.id}</div>
-                    <div className="user-badge">User: {post.userId}</div>
+          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+            {posts.map((post) => (
+              <div
+                key={post.id}
+                className="bg-white dark:bg-gray-800 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex flex-col h-full"
+              >
+                <div
+                  className="relative rounded-t-2xl"
+                  style={{
+                    background: getRandomColor(),
+                    height: "160px",
+                  }}
+                >
+                  <div className="absolute top-3 left-3 bg-black/60 text-white text-xs px-3 py-1 rounded-full">
+                    Post #{post.id}
                   </div>
-                  <div className="card-body">
-                    <h5 className="card-title fw-bold text-dark truncate-title">{post.title}</h5>
-                    <p className="card-text text-muted post-body">{post.body}...</p>
-                    
-                    <div className="d-flex justify-content-between align-items-center mt-4">
-                      <small className="text-muted">Posted by User {post.userId}</small>
-                      <div className="d-flex gap-2">
-                        <button 
-                          onClick={() => {setOpen(true); setEditPost(post)}}
-                          className="btn btn-sm btn-outline-primary rounded-pill d-flex align-items-center px-3 action-btn"
-                        >
-                          <FaEdit className="me-1" /> Edit
-                        </button>
-                        <button
-                          onClick={() => {setOpenDeleteModal(true); setDeletePostId(post.id)}}
-                          className="btn btn-sm btn-outline-danger rounded-pill d-flex align-items-center px-3 action-btn"
-                        >
-                          <FaTrash className="me-1" /> Delete
-                        </button>
-                      </div>
+                  <div className="absolute bottom-3 right-3 bg-white/70 text-gray-700 text-xs px-3 py-1 rounded-full">
+                    User: {post.userId}
+                  </div>
+                </div>
+
+                <div className="p-4 flex flex-col flex-grow">
+                  <h5 className="text-lg font-bold text-gray-900 dark:text-white line-clamp-1">
+                    {post.title}
+                  </h5>
+                  <p className="text-gray-600 dark:text-gray-300 text-sm mt-2 line-clamp-3">
+                    {post.body.substring(0, 100)}...
+                  </p>
+                  
+                  <div className="flex items-center justify-between mt-auto pt-4">
+                    <small className="text-gray-500 text-xs">
+                      Posted by User {post.userId}
+                    </small>
+                    <div className="flex items-center gap-2">
+                      <GoComment className="text-blue-600 cursor-pointer hover:text-blue-800 transition-all duration-200 hover:scale-110" size={20} onClick={() => navigate(`/posts/${post.id}/comments`)}/>
+                      <button
+                        onClick={() => {
+                          setOpen(true);
+                          setEditPost(post);
+                        }}
+                        className="flex items-center gap-1 text-blue-600 border border-blue-600 hover:bg-blue-600 hover:text-white text-xs px-3 py-1 rounded-full transition-all duration-200"
+                      >
+                        <FaEdit className="text-xs" /> Edit
+                      </button>
+                      <button
+                        onClick={() => {
+                          setOpenDeleteModal(true);
+                          setDeletePostId(post.id);
+                        }}
+                        className="flex items-center gap-1 text-red-600 border border-red-600 hover:bg-red-600 hover:text-white text-xs px-3 py-1 rounded-full transition-all duration-200"
+                      >
+                        <FaTrash className="text-xs" /> Delete
+                      </button>
                     </div>
                   </div>
                 </div>

@@ -47,7 +47,7 @@ function UserSelect({ users, selectedUser, setSelectedUser }: Props) {
         >
           <MenuItem value="">
             <em>All Users</em>
-            </MenuItem>
+          </MenuItem>
             {users.map((user) => (
                 <MenuItem
                     key={user.id}

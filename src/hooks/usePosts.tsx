@@ -15,25 +15,25 @@ function usePosts() {
         getPosts(page);
     }, [page, selectedUser]);
 
-    const getPosts = (pageNumber: number) => {
-        let url = `/posts?_page=${pageNumber}&_limit=${limit}`;
-        if (selectedUser !== "") url += `&userId=${selectedUser}`;
+      const getPosts = (pageNumber: number) => {
+          let url = `/posts?_page=${pageNumber}&_limit=${limit}`;
+          if (selectedUser !== "") url += `&userId=${selectedUser}`;
 
-        apiClient.get<Post[]>(url)
-          .then((res) => {
-            if (res.data.length < limit){
-              setHasMore(false);
-            }
-            if (pageNumber === 1) {
-              setPosts(res.data);
-            } else {
-              setPosts((prev) => [...prev, ...res.data]);
-            }
-          })
-          .catch((error) => {
-            console.error("Error fetching posts:", error);
-          });
-    };
+          apiClient.get<Post[]>(url)
+            .then((res) => {
+              if (res.data.length < limit){
+                setHasMore(false);
+              }
+              if (pageNumber === 1) {
+                setPosts(res.data);
+              } else {
+                setPosts((prev) => [...prev, ...res.data]);
+              }
+            })
+            .catch((error) => {
+              console.error("Error fetching posts:", error);
+            });
+      };
 
     const loadMore = () => setPage((prev) => prev + 1);
 

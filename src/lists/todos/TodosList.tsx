@@ -5,9 +5,10 @@ import {
 } from 'react-icons/fi';
 import { Pagination, PaginationItem } from '@mui/material';
 import { InputLabel, MenuItem, Select, FormControl } from "@mui/material";
+import { FaCheckCircle, FaFilter, FaRegCircle } from 'react-icons/fa';
 
 function TodosList() {
-  const { todos, page, setPage, pageSize, limit, setLimit } = useTodos();
+  const { todos, page, setPage, pageSize, limit, setLimit, changeStatus, currentFilter, setCurrentFilter } = useTodos();
 
   const handlePageChange = (event: ChangeEvent<unknown>, value : number) => {
     console.log(event)
@@ -63,6 +64,53 @@ function TodosList() {
                   ))}
                 </Select>
               </FormControl>
+              <div className="d-flex gap-3">
+                <button 
+                  onClick={() => { setCurrentFilter(''); setPage(1); }} 
+                  className="btn d-flex align-items-center gap-2 btn-all"
+                  style={{
+                    backgroundColor: currentFilter === '' ? '#e8f5e9' : 'white',
+                    color: currentFilter === '' ? '#2e7d32' : '#455a64',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: '8px',
+                    padding: '8px 15px',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <FaFilter size={14} />
+                  <span>All</span>
+                </button>
+                <button 
+                  onClick={() => { setCurrentFilter('true'); setPage(1); }} 
+                  className="btn d-flex align-items-center gap-2 btn-all"
+                  style={{
+                    backgroundColor: currentFilter === 'true' ? '#e8f5e9' : 'white',
+                    color: currentFilter === 'true' ? '#2e7d32' : '#455a64',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: '8px',
+                    padding: '8px 15px',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <FaCheckCircle size={14} className="text-success" />
+                  <span>Completed</span>
+                </button>
+                <button 
+                  onClick={() => { setCurrentFilter('false'); setPage(1); }} 
+                  className="btn d-flex align-items-center gap-2 btn-all"
+                  style={{
+                    backgroundColor: currentFilter === 'false' ? '#e8f5e9' : 'white',
+                    color: currentFilter === 'false' ? '#2e7d32' : '#455a64',
+                    border: '1px solid #e0e0e0',
+                    borderRadius: '8px',
+                    padding: '8px 15px',
+                    transition: 'all 0.2s ease'
+                  }}
+                >
+                  <FaRegCircle size={14} className="text-warning" />
+                  <span>Uncompleted</span>
+                </button>
+              </div>
           </div>
         </div>
       </div>
@@ -72,7 +120,8 @@ function TodosList() {
           todos.map((todo) => (
             <div 
               key={todo.id} 
-              className={`card mb-3 shadow-sm todo-card ${todo.completed ? 'completed' : ''}`}
+              onClick={() => changeStatus(todo.id)}
+              className={`card mb-3 shadow-sm todo-card cursor-pointer ${todo.completed ? 'completed' : ''}`}
             >
               <div className="card-body">
                 <div className="d-flex align-items-start">
