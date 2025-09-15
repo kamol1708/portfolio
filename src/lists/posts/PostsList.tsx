@@ -129,7 +129,8 @@ function PostsList() {
                       Posted by User {post.userId}
                     </small>
                     <div className="flex items-center gap-2">
-                      <GoComment className="text-blue-600 cursor-pointer hover:text-blue-800 transition-all duration-200 hover:scale-110" size={20} onClick={() => navigate(`/posts/${post.id}/comments`)}/>
+                      <GoComment className="text-blue-600 cursor-pointer hover:text-blue-800 transition-all duration-200 hover:scale-110" size={20} 
+                      onClick={() => navigate(`/posts/${post.id}/comments`)}/>
                       <button
                         onClick={() => {
                           setOpen(true);
