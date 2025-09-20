@@ -1,0 +1,92 @@
+.best-selling{
+    padding: 50px 0;
+}
+
+.best-selling-container{
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.best-selling-title h1{
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.best-selling-products{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.best-selling-products .best-selling-product-card{
+    display: flex;
+    gap: 15px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.best-selling-products .best-selling-product-card img{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.best-selling-products .best-selling-product-card:hover{
+    transform: translateY(-10px);
+}
+
+.best-selling-product-info{
+    text-align: left;
+}
+
+.best-selling-product-info h6{
+   font-weight: 600;
+    font-style: SemiBold;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #333333;
+}
+
+.best-selling-product-info p{
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #E21A43;
+    margin-top: 10px;
+}
+
+.best-selling-product-info p span{
+    margin-right: 10px;
+    text-decoration: line-through;
+    color: #B2B2B2;
+    font-size: 14px;
+    font-weight: 400;
+    font-style: Regular;
+}
+
+.best-selling-product-info button{
+    padding: 8px 12px;
+    color:#E21A43;
+    border: 1px solid #E21A43;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.best-selling-product-info button:hover{
+    background-color: #E21A43;
+    color: #fff;
+}
+
+.best-selling-product-info .rating{
+    color: #E21A43;
+    margin-top: 5px;
+    font-size: 12px;
+}

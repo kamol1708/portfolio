@@ -40,6 +40,12 @@ function FilterCategories({ currentFilter, setCurrentFilter }: Props) {
   return (
     <div className="filter-categories">
       <div className="categories-list">
+        <div
+            className={`category-item ${currentFilter === "" ? "active" : ""}`}
+            onClick={() => setCurrentFilter("")}
+          >
+            <span>All</span>
+          </div>
         {categories.map((category: Category) => (
           <div
             key={category.id}

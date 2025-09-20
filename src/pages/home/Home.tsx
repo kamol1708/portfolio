@@ -1,3 +1,5 @@
+import BestSelling from "../../components/bestSelling/bestSelling"
+import Footer from "../../components/footer/Footer"
 import FreeService from "../../components/freeService/FreeService"
 import FreshProduct from "../../components/freshProduct/FreshProduct"
 import Hero from "../../components/main/Hero"
@@ -13,7 +15,9 @@ function Home() {
       <FreeService />
       <SellingProducts />
       <FreshProduct />
+      <BestSelling />
       <MobileApp />
+      <Footer />
     </div>
   )
 }

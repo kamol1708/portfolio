@@ -5,6 +5,8 @@
 @import "./components/mobileApp/mobileApp.css";
 @import "./components/product/products.css";
 @import "./components/product/categories.css";
+@import "./components/footer/footer.css";
+@import "./components/bestSelling/bestSelling.css";
 
 @import "tailwindcss";
 

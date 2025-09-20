@@ -1,4 +1,3 @@
-import { FaCartPlus, FaHeart, FaSearchPlus } from "react-icons/fa";
 import useProducts from "../../hooks/useProducts";
 import { useState } from "react";
 
@@ -61,7 +60,7 @@ function ProductList({ currentFilter }: Props) {
                                         className={isClicked ? "zoomed" : ""}
                                     />
 
-                                    {isClicked && (
+                                    {isHovered && (
                                         <div className="product-overlay active">
                                             <h3 className="product-name">{product.name}</h3>
                                             <button className="order-now-btn">
@@ -71,13 +70,13 @@ function ProductList({ currentFilter }: Props) {
                                         </div>
                                     )}
 
-                                    {isHovered && !isClicked && (
+                                    {/* {isHovered && !isClicked && (
                                         <div className="hover-icons">
                                             <button className="icon-btn"><FaCartPlus /></button>
                                             <button className="icon-btn"><FaHeart /></button>
                                             <button className="icon-btn"><FaSearchPlus /></button>
                                         </div>
-                                    )}
+                                    )} */}
                                 </div>
 
                                 <div className={`product-info ${isClicked ? "hidden" : ""}`}>
