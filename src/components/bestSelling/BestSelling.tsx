@@ -25,7 +25,10 @@ function BestSelling() {
                                 <h6>{product.name}</h6>
                                 <p><span className="old-price">${product.oldPrice}</span>${product.price}</p>
                                 <button>Buy Now</button>
-                                <Rating className="rating" name="read-only" value={product.rating} size="small" />
+                                <div className="rating-container">
+                                    <Rating className="rating" name="read-only" value={product.rating} size="small" />
+                                    <span className="rating">({product.rating})</span>
+                                </div>
                             </div>
                         </div>
                     ))}

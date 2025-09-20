@@ -24,3 +24,11 @@ export interface Product {
   weight: string;
   rating: number;
 }
+
+export interface CarouselItem {
+  id: string;
+  title1: string;
+  title2: string;
+  desc: string;
+  imgUrl: string;
+}

@@ -1,6 +1,4 @@
-import heroImg from "../../assets/backgroundSushi.svg";
-import heroImg2 from "../../assets/cakehero.jpg";
-import heroImg3 from "../../assets/pastaHero.jpg";
+
 import orange from "../../assets/004-orange-juice.svg";
 import brocolli from "../../assets/003-broccoli.svg";
 import fish from "../../assets/005-fish.svg";
@@ -11,31 +9,66 @@ import sweet from "../../assets/007-cupcake.svg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import useCarousel from "../../hooks/useCarousel";
+import type { CarouselItem } from "../../types/types";
 
 function Hero() {
+  const { carouselQuery } = useCarousel();
+
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: true,
-    // arrows: true,
+    arrows: true, 
+    fade: true, 
+    adaptiveHeight: true,
+    centerMode: true,
+    centerPadding: "40px",
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 1,
+          centerPadding: "20px"
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+          arrows: false 
+        }
+      }
+    ]
+  };
+
+
+  const carousel = carouselQuery.data;
+
+  if (carouselQuery.isLoading) {
+    return <div>Loading...</div>;
   }
+  if (carouselQuery.isError) {
+    return <div>Error loading carousel data.</div>;
+  }
+
   return (
     <div className="hero-container">
-      <Slider {...settings}> 
-        <div className="hero">
+      <Slider {...settings} className="hero-slider"> 
+        {carousel?.map((item: CarouselItem) => (
+        <div className="hero" key={item.id}>
           <div className="left-side">
             <h1 className="hero-text">
-              <span className="hero-title-line">All You Need For</span>
-              <span className="hero-title-accent">Perfect Breakfast</span>
+              <span className="hero-title-line">{item.title1}</span>
+              <span className="hero-title-accent">{item.title2}</span>
             </h1>
             <p className="hero-para">
-              Start your day with the finest ingredients for a nutritious and delicious breakfast. 
-              We provide fresh, high-quality products to make your mornings special.
+              {item.desc}
             </p>
             <div className="hero-buttons">
               <button className="cta-button primary">
@@ -51,75 +84,21 @@ function Hero() {
           
           <div className="right-side">
             <div className="hero-image-container">
-              <img src={heroImg} alt="Delicious breakfast items" className="hero-main-image" />
+              <img src={item.imgUrl} alt="Delicious breakfast items" className="hero-main-image" />
               <div className="floating-element floating-element-1"></div>
               <div className="floating-element floating-element-2"></div>
               <div className="floating-element floating-element-3"></div>
+              <div className="floating-element floating-element-4"></div>
+              <div className="floating-element floating-element-5"></div>
+              <div className="floating-element floating-element-6"></div>
+              <div className="floating-element floating-element-7"></div>
+              <div className="floating-element floating-element-8"></div>
+              <div className="floating-element floating-element-9"></div>
+              <div className="floating-element floating-element-10"></div>
             </div>
           </div>
         </div>
-        <div className="hero">
-          <div className="left-side">
-            <h1 className="hero-text">
-              <span className="hero-title-line">Delight in Every</span>
-              <span className="hero-title-accent">Sweet Bite</span>
-            </h1>
-            <p className="hero-para">
-              Indulge in our delectable sweets and treats, crafted to satisfy your cravings.
-              From cakes to pastries, we have something for every sweet tooth.
-            </p>
-            <div className="hero-buttons">
-              <button className="cta-button primary">
-                Buy Now
-                <span className="button-hover-effect"></span>
-              </button>
-              <button className="cta-button secondary">
-                See More
-                <span className="button-icon">→</span>
-              </button>
-            </div>
-          </div>
-          
-          <div className="right-side">
-            <div className="hero-image-container">
-              <img src={heroImg2} alt="Delicious breakfast items" className="hero-main-image" />
-              <div className="floating-element floating-element-1"></div>
-              <div className="floating-element floating-element-2"></div>
-              <div className="floating-element floating-element-3"></div>
-            </div>
-          </div>
-        </div>
-        <div className="hero">
-          <div className="left-side">
-            <h1 className="hero-text">
-              <span className="hero-title-line">Taste the Authentic</span>
-              <span className="hero-title-accent">Italian Pasta</span>
-            </h1>
-            <p className="hero-para">
-              Experience the rich flavors of Italy with our authentic pasta selection.
-              Perfect for any meal, our pasta is made from the finest ingredients.
-            </p>
-            <div className="hero-buttons">
-              <button className="cta-button primary">
-                Buy Now
-                <span className="button-hover-effect"></span>
-              </button>
-              <button className="cta-button secondary">
-                See More
-                <span className="button-icon">→</span>
-              </button>
-            </div>
-          </div>
-          
-          <div className="right-side">
-            <div className="hero-image-container">
-              <img src={heroImg3} alt="Delicious breakfast items" className="hero-main-image" />
-              <div className="floating-element floating-element-1"></div>
-              <div className="floating-element floating-element-2"></div>
-              <div className="floating-element floating-element-3"></div>
-            </div>
-          </div>
-        </div>
+        ))}
       </Slider>
       <div className="hero-bottom">
         <div className="categories-container">
