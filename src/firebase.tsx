@@ -5,7 +5,7 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCz8BGLfaZNZWHoZQ3RMv_Xa3cHZ0--4qE",
+  apiKey: "",
   authDomain: "perfect-breakfast-645dc.firebaseapp.com",
   projectId: "perfect-breakfast-645dc",
   storageBucket: "perfect-breakfast-645dc.firebasestorage.app",
