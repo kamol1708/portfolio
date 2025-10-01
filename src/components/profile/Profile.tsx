@@ -38,9 +38,13 @@ function Profile() {
       toast.success("Profile updated successfully!");
       setOpen(false);
       reset();
-    } catch (error: any) {
-      console.error("❌ Update error:", error);
-      alert(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("❌ Update error:", error.message);
+        alert(error.message);
+      } else {
+        console.error("❌ Unknown error:", error);
+      }
     }
   };
 
@@ -58,9 +62,13 @@ function Profile() {
       toast.success("🔐 Parol muvaffaqiyatli o‘zgartirildi!");
       setOpenPassword(false);
       resetPass();
-    } catch (error: any) {
-      console.error("❌ Password update error:", error);
-      alert(error.message);
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        console.error("❌ Update error:", error.message);
+        alert(error.message);
+      } else {
+        console.error("❌ Unknown error:", error);
+      }
     }
   };
 

@@ -75,6 +75,7 @@ export const useOrders = () => {
                 shippingAddress: orderData.shippingAddress || "unknown",
                 notes: orderData.notes || "unknown",
                 deliveryDate: orderData.deliveryDate || "unknown",
+                location: orderData.location,
               } as Order
             })
           )

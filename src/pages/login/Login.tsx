@@ -6,6 +6,7 @@ import { auth, db } from '../../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import type { User } from '../../types/types';
+import { FirebaseError } from 'firebase/app';
 
 const LoginForm = () => {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm();
@@ -31,25 +32,31 @@ const LoginForm = () => {
         localStorage.removeItem("role");
         toast.warn("User role topilmadi.");
       }
-    } catch (error : any) {
-      const code = error?.code as string | undefined;
-      console.log(error)
-      switch (code) {
-        case "auth/user-not-found":
-          toast.error("Account topilmadi. Iltimos, ro'yxatdan o'ting!");
-          break;
-        case "auth/wrong-password":
-        case "auth/invalid-credential":
-          toast.error("Noto'g'ri email yoki parol. Qayta urinib ko'ring.");
-          break;
-        case "auth/invalid-email":
-          toast.error("Email manzili noto'g'ri formatda.");
-          break;
-        case "auth/too-many-requests":
-          toast.error("Juda ko'p urinish. Iltimos, birozdan keyin qayta urinib ko'ring.");
-          break;
-        default:
-          toast.error("Kirishda hatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
+    } catch (error: unknown) {
+
+      if (error instanceof FirebaseError) {
+        const code = error.code;
+
+        switch (code) {
+          case "auth/user-not-found":
+            toast.error("Account topilmadi. Iltimos, ro'yxatdan o'ting!");
+            break;
+          case "auth/wrong-password":
+          case "auth/invalid-credential":
+            toast.error("Noto'g'ri email yoki parol. Qayta urinib ko'ring.");
+            break;
+          case "auth/invalid-email":
+            toast.error("Email manzili noto'g'ri formatda.");
+            break;
+          case "auth/too-many-requests":
+            toast.error("Juda ko'p urinish. Iltimos, birozdan keyin qayta urinib ko'ring.");
+            break;
+          default:
+            toast.error("Kirishda hatolik yuz berdi. Iltimos, qayta urinib ko'ring.");
+        }
+      } else {
+        toast.error("Noma'lum xatolik yuz berdi!");
+        console.error("❌ Unknown error:", error);
       }
     }
   };

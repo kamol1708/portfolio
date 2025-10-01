@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import useCarousel from "../../hooks/useCarousel";
 import type { CarouselItem } from "../../types/types";
+import ProductsSlider from "./ProductsSlider";
 
 function Hero() {
   const { carousel, loading } = useCarousel();
@@ -94,62 +95,63 @@ function Hero() {
         </div>
         ))}
       </Slider>
+      <ProductsSlider />
       <div className="hero-bottom">
         <div className="categories-container">
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={orange} alt="Fruits" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Fruits</p>
+            <p className="hero-category-name">Fruits</p>
           </div>
           
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={brocolli} alt="Vegetables" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Vegetables</p>
+            <p className="hero-category-name">Vegetables</p>
           </div>
           
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={fish} alt="Semi-Finished" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Semi-Finished</p>
+            <p className="hero-category-name">Semi-Finished</p>
           </div>
           
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={bakery} alt="Bakery" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Bakery</p>
+            <p className="hero-category-name">Bakery</p>
           </div>
           
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={meat} alt="Meat" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Meat</p>
+            <p className="hero-category-name">Meat</p>
           </div>
           
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={pasta} alt="Pasta" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Pasta</p>
+            <p className="hero-category-name">Pasta</p>
           </div>
           
-          <div className="category-item">
-            <div className="category-icon">
+          <div className="hero-category-item">
+            <div className="hero-category-icon">
               <img src={sweet} alt="Sweets" />
               <div className="icon-hover-effect"></div>
             </div>
-            <p className="category-name">Sweets</p>
+            <p className="hero-category-name">Sweets</p>
           </div>
         </div>
       </div>

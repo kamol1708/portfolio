@@ -1,4 +1,3 @@
-import Footer from "../../components/footer/Footer";
 import ProductList from "../../components/product/ProductList"
 import useCategories from "../../hooks/useCategories"
 import { FaShopify } from "react-icons/fa";
@@ -47,7 +46,6 @@ function ShopPage() {
                     <ProductList products={products} />
                 </div>
             </div>
-            <Footer />
         </div>
     )
 }

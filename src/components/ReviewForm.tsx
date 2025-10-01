@@ -3,6 +3,7 @@ import { Rating } from '@mui/material'
 import { useState } from "react"
 import useContextPro from "../hooks/useContextPro"
 import useProducts from "../hooks/useProducts"
+import { toast } from "react-toastify"
 
 interface ReviewFormData {
   title: string
@@ -10,7 +11,7 @@ interface ReviewFormData {
 }
 
 function ReviewForm({ productId }: { productId: string }) {
-  const { addReview } = useProducts()
+  const { addReview, loading } = useProducts()
   const { control, register, handleSubmit, reset, formState: { errors }, watch } = useForm<ReviewFormData>({
     defaultValues: {
       rating: 0,
@@ -23,13 +24,8 @@ function ReviewForm({ productId }: { productId: string }) {
   const ratingValue = watch("rating")
 
   const onSubmit = async (data: ReviewFormData) => {
-    console.log("Form data:", data);
-    console.log("User:", user);
     
     if (!data.rating || !user?.uid) {
-      console.log("Missing rating or user ID");
-      console.log("Rating:", data.rating);
-      console.log("User ID:", user?.uid);
       return;
     }
 
@@ -43,10 +39,8 @@ function ReviewForm({ productId }: { productId: string }) {
         createdAt: new Date() 
       };
       
-      console.log("Review data to submit:", reviewData);
-      
       await addReview(productId, reviewData);
-      console.log("Review submitted successfully");
+      toast.success("Review submitted successfully");
       
       reset();
     } catch (error) {
@@ -55,6 +49,11 @@ function ReviewForm({ productId }: { productId: string }) {
       setIsSubmitting(false);
     }
   };
+
+   if (loading) { return <div className="products-loading">
+                            <div className="loading-spinner">   
+                            </div>
+                        </div>;}
 
   if (!user) {
     return (

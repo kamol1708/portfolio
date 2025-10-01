@@ -96,12 +96,12 @@ const BlogPage = () => {
     <div className="blog-page">
       <section className="blog-hero">
         <div className="container">
-          <div className="hero-content">
-            <div className="hero-text">
-              <h1 className="hero-title">
+          <div className="blog-hero-content">
+            <div className="blog-hero-text">
+              <h1 className="blog-hero-title">
                 Perfect Breakfast Blog
               </h1>
-              <p className="hero-subtitle">
+              <p className="blog-hero-subtitle">
                 Breakfast ideas, healthy eating tips and news
               </p>
               <div className="blog-search-box">
@@ -115,9 +115,9 @@ const BlogPage = () => {
                 />
               </div>
             </div>
-            <div className="hero-image">
+            <div className="blog-hero-image">
               <div className="icon-circle">
-                <FaUtensils className="hero-icon" />
+                <FaUtensils className="blog-hero-icon" />
               </div>
             </div>
           </div>

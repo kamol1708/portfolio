@@ -1,4 +1,4 @@
-import { FaMapMarkerAlt, FaMoneyBillWave, FaTag, FaUser } from "react-icons/fa";
+import { FaClock, FaCommentAlt, FaMapMarkerAlt, FaMoneyBillWave, FaTag, FaTruck, FaUser } from "react-icons/fa";
 import { useOrders } from "../../hooks/useOrders";
 import { useState } from "react";
 import { GiKnifeFork } from "react-icons/gi";
@@ -6,19 +6,20 @@ import useContextPro from "../../hooks/useContextPro";
 
 function CartStatus() {
   const { orders, getOrdersByStatus, loading } = useOrders();
-  const {state: { user } } = useContextPro();
+  const {
+    state: { user },
+  } = useContextPro();
   const [filterStatus, setFilterStatus] = useState("all");
 
-  const filteredOrdersStatus = filterStatus === "all" ? orders : getOrdersByStatus(filterStatus);
+  const filteredOrdersStatus =
+    filterStatus === "all" ? orders : getOrdersByStatus(filterStatus);
 
   const userOrders = user
     ? orders.filter((order) => order.userId === user.uid)
     : [];
 
   const filteredOrders =
-    filterStatus === "all"
-      ? userOrders
-      : filteredOrdersStatus
+    filterStatus === "all" ? userOrders : filteredOrdersStatus;
 
   const getStatusBadgeClass = (status: string) => {
     switch (status.toLowerCase()) {
@@ -26,20 +27,22 @@ function CartStatus() {
         return "status-badge status-pending";
       case "completed":
         return "status-badge status-completed";
+      case "delivered":
+        return "status-badge status-delivered";
       default:
         return "status-badge";
     }
   };
 
   if (loading) {
-        return (
-        <div className="admin-carousel">
-            <div className="loading-state">
-            <div className="dash-loading-spinner"></div>
-            <p>Loading...</p>
-            </div>
+    return (
+      <div className="admin-carousel">
+        <div className="loading-state">
+          <div className="dash-loading-spinner"></div>
+          <p>Loading...</p>
         </div>
-        );
+      </div>
+    );
   }
   return (
     <div className="cart-page">
@@ -88,6 +91,14 @@ function CartStatus() {
               >
                 Completed
               </button>
+              <button
+                className={`filter-btn ${
+                  filterStatus === "delivered" ? "active" : ""
+                }`}
+                onClick={() => setFilterStatus("delivered")}
+              >
+                Delivered
+              </button>
             </div>
           </div>
           <div className="order-status">
@@ -113,35 +124,58 @@ function CartStatus() {
                               <h3>{order.user?.name || "Unknown User"}</h3>
                               <span className="order-id">
                                 Order #
-                                {order.id
-                                  ? order.id.slice(-6)
-                                  : "------"}
+                                {order.id ? order.id.slice(-6) : "------"}
                               </span>
                             </div>
-
                           </div>
                           <div className={getStatusBadgeClass(order.status)}>
                             {order.status}
                           </div>
                         </div>
                         <div className="order-status-details">
-                          <div className="status-detail-item">
-                            <FaMapMarkerAlt className="detail-icon" />
-                            <span className="address-text">
-                              {order.shippingAddress}
-                            </span>
-                          </div>
-                          <div className="status-detail-item">
-                            <FaMoneyBillWave className="detail-icon" />
-                            <span>
-                              $
-                              {typeof order.totalPrice === "number"
-                                ? order.totalPrice.toFixed(2)
-                                : "0.00"}{" "}
-                              • {order.paymentMethod}
-                            </span>
-                          </div>
+                          {order.shippingAddress && (
+                            <div className="status-detail-item">
+                              <FaMapMarkerAlt className="detail-icon" />
+                              <span className="address-text">{order.shippingAddress}</span>
+                            </div>
+                          )}
+                          {order.totalPrice > 0 && (
+                            <div className="status-detail-item">
+                              <FaMoneyBillWave className="detail-icon" />
+                              <span>
+                                ${order.totalPrice.toFixed(2)} • {order.paymentMethod ?? "N/A"}
+                              </span>
+                            </div>
+                          )}
+                          {order.deliveryDate && (
+                            <div className="status-detail-item">
+                              <FaClock className="detail-icon" />
+                              <span>{new Date(order.deliveryDate).toLocaleDateString() || "N/A"}</span>
+                            </div>
+                          )}
+                          {order.shippingAddress && (
+                            <div className="status-detail-item">
+                              <FaTruck className="detail-icon" />
+                              <span>{order.shippingAddress}</span>
+                            </div>
+                          )}
+                          {order.notes && (
+                            <div className="status-detail-item">
+                              <FaCommentAlt className="detail-icon" />
+                              <span>{order.notes}</span>
+                            </div>
+                          )}
+
+                          {order.location && (
+                            <div className="status-detail-item">
+                              <FaMapMarkerAlt className="detail-icon" />
+                              <span>
+                                Lat: {order.location.lat}, Lng: {order.location.lng}
+                              </span>
+                            </div>
+                          )}
                         </div>
+
                         <div className="stats-order-products">
                           <h4>
                             Order Items (
@@ -173,8 +207,7 @@ function CartStatus() {
                                         {product.quantity}x
                                       </span>
                                       <span className="status-product-name">
-                                        {product.name ||
-                                          `Product ${index + 1}`}
+                                        {product.name || `Product ${index + 1}`}
                                       </span>
                                     </div>
                                     <div className="status-product-details">
@@ -193,7 +226,6 @@ function CartStatus() {
                                         {product.weight && (
                                           <span className="chef-product-weight">
                                             • {product.weight}
-
                                           </span>
                                         )}
                                       </div>

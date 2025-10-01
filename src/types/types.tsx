@@ -64,7 +64,11 @@ export interface Order {
   paymentMethod: string;
   shippingAddress: string;
   notes: string;
-  deliveryDate: Date;
+  deliveryDate: string;
+  location?: {  
+    lat: number;
+    lng: number;
+  };
 }
 
 export interface Reviews {

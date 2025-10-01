@@ -166,6 +166,8 @@
 
 .menu-icon {
   display: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .header-mobile-logo-menu{
@@ -179,7 +181,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.5);
   z-index: 999;
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -343,5 +345,6 @@
 }
 
 .header-logo:hover {
+    cursor: pointer;
     animation: float 2s ease-in-out infinite;
 }

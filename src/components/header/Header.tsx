@@ -4,7 +4,7 @@ import userLogo from "../../assets/Profile.svg";
 import cartLogo from "../../assets/Buy.svg";
 import useContextPro from '../../hooks/useContextPro';
 import { Avatar, Box, Menu, MenuItem, Typography } from '@mui/material';
-import { FaChevronDown, FaSearch, FaSignOutAlt, FaUser, FaUserAlt, FaUserShield } from 'react-icons/fa';
+import { FaChevronDown, FaSearch, FaSignOutAlt, FaTruck, FaUser, FaUserAlt, FaUserShield } from 'react-icons/fa';
 import { useState } from 'react';
 import { IoIosMenu } from 'react-icons/io';
 import { signOut } from 'firebase/auth';
@@ -196,6 +196,20 @@ function Header() {
                         </Link>
                       </MenuItem>
                     )}
+                    <MenuItem 
+                      onClick={() => navigate("/cart/order-status")} 
+                      sx={{ 
+                        py: 1.5,
+                        '&:hover': {
+                          backgroundColor: 'rgba(211, 47, 47, 0.08)'
+                        }
+                      }}
+                    >
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                        <FaTruck style={{ color: '#fd6e6eff', fontSize: '16px' }} />
+                        <span>My Orders</span>
+                      </div>
+                    </MenuItem>
                     <MenuItem 
                       onClick={handleLogout} 
                       sx={{ 

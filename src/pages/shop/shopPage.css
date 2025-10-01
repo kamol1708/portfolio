@@ -72,7 +72,7 @@
     margin: 0 auto;
     font-weight: 600;
     font-size: 1.2rem;
-    color: white;
+    color: rgb(231, 225, 225);
     text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -275,7 +275,7 @@
     }
     
     .shop-page::before {
-        height: 200px;
+        height: 400px;
         clip-path: ellipse(120% 60% at 50% 0%);
     }
     
@@ -296,22 +296,8 @@
     }
 
     .shop-left-content {
-        position: fixed;
-        top: 0;
-        left: -100%;
-        width: 85%;
-        max-width: 320px;
-        height: 100vh;
-        z-index: 999;
-        overflow-y: auto;
-        transition: left 0.3s ease;
-        border-radius: 0;
-        padding-top: 2rem;
-        box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15);
-    }
-    
-    .shop-left-content.active {
-        left: 0;
+        width: 100%;
+        max-width: 100%;
     }
     
     .shop-right-content {
