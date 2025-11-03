@@ -2,9 +2,9 @@ import { useState } from "react"
 import { Nav } from "react-bootstrap"
 import { Link, useNavigate, useLocation } from "react-router-dom"
 import { House, People, FileText, Gear, BoxArrowRight, List } from "react-bootstrap-icons"
-import useContextPro from "../../hooks/useContextPro"
 import { FaBox, FaHeart } from "react-icons/fa"
 import { SiWine } from "react-icons/si"
+import useContextPro from "../../hooks/useContextPro"
 
 function AdminSidebar() {
     const [isOpen, setIsOpen] = useState(true)
