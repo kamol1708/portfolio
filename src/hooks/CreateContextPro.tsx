@@ -1,9 +1,10 @@
 import { useEffect, useReducer, type Dispatch, type ReactNode } from "react";
 import { MyContext } from "../context/MyContext";
 import type {User } from "../types/types";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { doc, getDoc, getFirestore } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { doc, getDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import { auth, db } from "../firebase";
 
 export interface ContextType {
   state: TypeState;
@@ -76,8 +77,6 @@ function CreateContextPro({ children }: { children: ReactNode }) {
 
 
   const fetchUser = () => {
-    const auth = getAuth();
-    const db = getFirestore();
     const unsub = onAuthStateChanged(auth, async (user) => {
       if (user) {
         try {

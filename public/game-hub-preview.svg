@@ -1,0 +1,135 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#070A14"/>
+      <stop offset="0.55" stop-color="#05060D"/>
+      <stop offset="1" stop-color="#0A0D16"/>
+    </linearGradient>
+    <linearGradient id="hero" x1="120" y1="240" x2="520" y2="520" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD38A"/>
+      <stop offset="0.55" stop-color="#FFB100"/>
+      <stop offset="1" stop-color="#64D8FF"/>
+    </linearGradient>
+    <linearGradient id="heading" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#F2DFC0"/>
+      <stop offset="1" stop-color="#7CD7FF"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="1" y2="0">
+      <stop stop-color="#FFB35C"/>
+      <stop offset="1" stop-color="#84D9FF"/>
+    </linearGradient>
+    <filter id="glow" x="760" y="120" width="620" height="620" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="900" rx="0" fill="url(#bg)"/>
+  <circle cx="1060" cy="360" r="150" fill="#612BFF" fill-opacity="0.28" filter="url(#glow)"/>
+
+  <rect x="36" y="24" width="1528" height="72" rx="22" fill="#17181F" stroke="#30333D" stroke-width="2"/>
+  <rect x="60" y="40" width="38" height="38" rx="12" fill="url(#hero)"/>
+  <text x="79" y="65" fill="#EFF1FF" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">GH</text>
+  <text x="114" y="66" fill="#F4F3F5" font-size="24" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">GAME HUB</text>
+
+  <text x="470" y="67" fill="#C8C8CE" font-size="22" font-family="Arial, Helvetica, sans-serif">Mahsulot</text>
+  <text x="600" y="67" fill="#C8C8CE" font-size="22" font-family="Arial, Helvetica, sans-serif">O'yinlar</text>
+  <text x="710" y="67" fill="#C8C8CE" font-size="22" font-family="Arial, Helvetica, sans-serif">Imkoniyatlar</text>
+  <text x="865" y="67" fill="#C8C8CE" font-size="22" font-family="Arial, Helvetica, sans-serif">Narxlar</text>
+  <text x="975" y="67" fill="#C8C8CE" font-size="22" font-family="Arial, Helvetica, sans-serif">Qo'llanma</text>
+  <text x="1110" y="67" fill="#C8C8CE" font-size="22" font-family="Arial, Helvetica, sans-serif">Savollar</text>
+
+  <rect x="1210" y="40" width="180" height="38" rx="14" fill="#2D2719" stroke="#7E6430"/>
+  <text x="1300" y="66" fill="#F5E4AA" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">O'qituvchi paneli</text>
+  <rect x="1400" y="40" width="110" height="38" rx="14" fill="#1E2028" stroke="#414550"/>
+  <text x="1455" y="66" fill="#F0F0F3" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Chiqish</text>
+
+  <rect x="36" y="180" width="290" height="40" rx="20" fill="#17181E" stroke="#353842"/>
+  <text x="58" y="206" fill="#FFBD70" font-size="24" font-family="Arial, Helvetica, sans-serif">✦</text>
+  <text x="78" y="206" fill="#D5D2D2" font-size="21" font-family="Arial, Helvetica, sans-serif">Premium classroom game platform</text>
+
+  <text x="36" y="305" fill="url(#heading)" font-size="58" font-family="Arial, Helvetica, sans-serif" font-weight="500">
+    <tspan x="36" dy="0">Darsni o'yinga</tspan>
+    <tspan x="36" dy="68">aylantiradigan</tspan>
+    <tspan x="36" dy="68">ideal platforma.</tspan>
+  </text>
+
+  <text x="36" y="500" fill="#C9CAD3" font-size="24" font-family="Arial, Helvetica, sans-serif">
+    <tspan x="36" dy="0">Teacher uchun boshqaruv oddiy, o'quvchi uchun esa tajriba qiziqarli bo'lishi</tspan>
+    <tspan x="36" dy="42">kerak. Game Hub quiz, memory, wheel, race va boshqa formatlarni bitta chiroyli</tspan>
+    <tspan x="36" dy="42">sahifada jamlab, darsni tez boshlash va energiyani ushlab turishni</tspan>
+    <tspan x="36" dy="42">osonlashtiradi.</tspan>
+  </text>
+
+  <rect x="36" y="640" width="260" height="72" rx="28" fill="url(#hero)"/>
+  <text x="162" y="687" fill="#11131A" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">O'yinlarni ko'rish</text>
+  <text x="242" y="686" fill="#11131A" font-size="30" font-family="Arial, Helvetica, sans-serif" font-weight="700">→</text>
+
+  <rect x="312" y="640" width="320" height="72" rx="28" fill="#14161D" stroke="#383B45" stroke-width="2"/>
+  <text x="472" y="687" fill="#E6E6EA" font-size="26" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">Qanday ishlashini ko'rish</text>
+
+  <rect x="36" y="770" width="146" height="44" rx="22" fill="#14161D" stroke="#2E323B"/>
+  <rect x="202" y="770" width="168" height="44" rx="22" fill="#14161D" stroke="#2E323B"/>
+  <rect x="390" y="770" width="188" height="44" rx="22" fill="#14161D" stroke="#2E323B"/>
+  <rect x="598" y="770" width="126" height="44" rx="22" fill="#14161D" stroke="#2E323B"/>
+  <text x="109" y="798" fill="#D6D6DA" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Teacher mode</text>
+  <text x="286" y="798" fill="#D6D6DA" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Premium games</text>
+  <text x="484" y="798" fill="#D6D6DA" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Classroom control</text>
+  <text x="661" y="798" fill="#D6D6DA" font-size="20" font-family="Arial, Helvetica, sans-serif" text-anchor="middle">Fast setup</text>
+
+  <rect x="855" y="200" width="705" height="520" rx="24" fill="#121420" stroke="#34207A" stroke-width="2"/>
+  <rect x="880" y="225" width="655" height="40" rx="14" fill="#1C1E2B" stroke="#31354B"/>
+  <circle cx="902" cy="245" r="6" fill="#FF6C7A"/>
+  <circle cx="922" cy="245" r="6" fill="#FFBE45"/>
+  <circle cx="942" cy="245" r="6" fill="#3DDC97"/>
+  <text x="1378" y="252" fill="#A6A7AF" font-size="16" font-family="Arial, Helvetica, sans-serif">classroom-session.tsx</text>
+
+  <rect x="880" y="285" width="405" height="270" rx="18" fill="#1D2029" stroke="#343746"/>
+  <text x="900" y="326" fill="#A7A6B2" font-size="18" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">SINF FAOLLIGI</text>
+  <rect x="1215" y="330" width="52" height="28" rx="14" fill="#17392E"/>
+  <text x="1241" y="350" fill="#7BF8D2" font-size="18" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">+18%</text>
+
+  <text x="900" y="375" fill="#8B8D96" font-size="18" font-family="Arial, Helvetica, sans-serif">G1</text>
+  <text x="900" y="424" fill="#8B8D96" font-size="18" font-family="Arial, Helvetica, sans-serif">G2</text>
+  <text x="900" y="473" fill="#8B8D96" font-size="18" font-family="Arial, Helvetica, sans-serif">G3</text>
+  <text x="900" y="522" fill="#8B8D96" font-size="18" font-family="Arial, Helvetica, sans-serif">G4</text>
+  <text x="900" y="571" fill="#8B8D96" font-size="18" font-family="Arial, Helvetica, sans-serif">G5</text>
+
+  <rect x="965" y="365" width="300" height="12" rx="6" fill="#292C35"/>
+  <rect x="965" y="414" width="300" height="12" rx="6" fill="#292C35"/>
+  <rect x="965" y="463" width="300" height="12" rx="6" fill="#292C35"/>
+  <rect x="965" y="512" width="300" height="12" rx="6" fill="#292C35"/>
+  <rect x="965" y="561" width="300" height="12" rx="6" fill="#292C35"/>
+  <rect x="965" y="365" width="215" height="12" rx="6" fill="url(#chart)"/>
+  <rect x="965" y="414" width="170" height="12" rx="6" fill="url(#chart)"/>
+  <rect x="965" y="463" width="252" height="12" rx="6" fill="url(#chart)"/>
+  <rect x="965" y="512" width="195" height="12" rx="6" fill="url(#chart)"/>
+  <rect x="965" y="561" width="280" height="12" rx="6" fill="url(#chart)"/>
+
+  <rect x="1300" y="285" width="235" height="124" rx="18" fill="#1D2029" stroke="#343746"/>
+  <text x="1320" y="340" fill="#A7A6B2" font-size="18" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">O'YINLAR</text>
+  <text x="1320" y="397" fill="#FFFFFF" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="700">12</text>
+  <text x="1320" y="430" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">Bittadan ortiq game mode mavjud</text>
+
+  <rect x="1300" y="421" width="235" height="134" rx="18" fill="#1D2029" stroke="#343746"/>
+  <text x="1320" y="463" fill="#A7A6B2" font-size="18" font-family="Arial, Helvetica, sans-serif" letter-spacing="3">PREMIUM</text>
+  <text x="1320" y="518" fill="#FFFFFF" font-size="42" font-family="Arial, Helvetica, sans-serif" font-weight="700">4</text>
+  <text x="1320" y="550" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">Maxsus formatlar obuna bilan</text>
+  <text x="1320" y="572" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">ochiladi</text>
+
+  <rect x="880" y="565" width="220" height="145" rx="18" fill="#1D2029" stroke="#343746"/>
+  <rect x="1112" y="565" width="220" height="145" rx="18" fill="#1D2029" stroke="#343746"/>
+  <rect x="1344" y="565" width="191" height="145" rx="18" fill="#1D2029" stroke="#343746"/>
+  <text x="900" y="606" fill="#F0F0F2" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">Teacher panel</text>
+  <text x="900" y="638" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">Savollar, studentlar va</text>
+  <text x="900" y="670" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">classroom nazorati</text>
+
+  <text x="1132" y="606" fill="#F0F0F2" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">Live game</text>
+  <text x="1132" y="638" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">Leaderboards, navbat va</text>
+  <text x="1132" y="670" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">instant feedback</text>
+
+  <text x="1364" y="606" fill="#F0F0F2" font-size="24" font-family="Arial, Helvetica, sans-serif" font-weight="700">Premium access</text>
+  <text x="1364" y="638" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">To'lov, unlock va</text>
+  <text x="1364" y="670" fill="#8F929D" font-size="16" font-family="Arial, Helvetica, sans-serif">kengaytirilgan tajriba</text>
+
+  <line x1="36" y1="860" x2="1564" y2="860" stroke="#1C2334" stroke-width="2"/>
+</svg>

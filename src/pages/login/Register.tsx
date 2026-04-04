@@ -36,7 +36,8 @@ function Register() {
   const [showConfirm, setShowConfirm] = useState(false);
 
   const onSubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
-    const { name, email, password, confirmPassword } = data;
+    const { name, password, confirmPassword } = data;
+    const email = data.email.trim().toLowerCase();
     if (password !== confirmPassword) {
       toast.error("Passwords do not match.");
       return;

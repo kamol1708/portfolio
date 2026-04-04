@@ -16,7 +16,14 @@ const LoginForm = () => {
 
   const Login = async (data: FieldValues) => {
     try {
-      const { user } = await signInWithEmailAndPassword(auth, data.email, data.password);
+      const normalizedEmail =
+        typeof data.email === "string" ? data.email.trim().toLowerCase() : "";
+
+      const { user } = await signInWithEmailAndPassword(
+        auth,
+        normalizedEmail,
+        data.password
+      );
       localStorage.setItem("token", user.uid);
       const userDocRef = doc(db, "users", user.uid);
       const userDocSnap = await getDoc(userDocRef);
@@ -38,6 +45,7 @@ const LoginForm = () => {
 
       if (error instanceof FirebaseError) {
         const code = error.code;
+        console.error("Login error:", code, error.message);
 
         switch (code) {
           case "auth/user-not-found":
