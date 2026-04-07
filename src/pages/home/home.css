@@ -197,6 +197,57 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  width: calc(100% + 18px);
+  margin-right: -18px;
+}
+
+.hero-toolbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.language-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  position: absolute;
+  top: 30px;
+  right: 42px;
+  z-index: 20;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 16px 32px rgba(7, 20, 44, 0.24);
+}
+
+.language-switcher__button {
+  min-width: 48px;
+  height: 36px;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.language-switcher__button:hover {
+  color: var(--text-main);
+}
+
+.language-switcher__button.is-active {
+  color: #fff;
+  background: linear-gradient(90deg, #1f79ff, #24d3ff);
+  box-shadow: 0 12px 22px rgba(23, 135, 255, 0.24);
 }
 
 .theme-toggle {
@@ -1204,6 +1255,19 @@ html {
   .hero-toolbar {
     align-items: flex-start;
     flex-direction: column;
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .hero-toolbar__actions {
+    width: 100%;
+    justify-content: space-between;
+    margin-left: 0;
+  }
+
+  .language-switcher {
+    top: 36px;
+    right: 24px;
   }
 
   #about .portfolio-panel__content,
